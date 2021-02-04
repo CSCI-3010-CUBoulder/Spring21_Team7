@@ -83,7 +83,15 @@ double Sum(std::vector<double> nums);
 double Product(std::vector<double> nums);
 
 // Adds an double n to each element of a given vector
-std::vector<double> VectorPlusN(std::vector<double> v, double n);
+std::vector<double> VectorPlusN(std::vector<double> v, double n)
+{
+  for(int i = 0; i < v.size(); i++)
+  {
+    v[i] += n;
+  }
+  
+  return v;
+}
 
 // Multiples an double n with each element of a given vector
 std::vector<double> VectorTimesN(std::vector<double> v, double n);
@@ -93,7 +101,16 @@ std::vector<double> VectorTimesN(std::vector<double> v, double n);
 std::vector<double> Multiples(double n, double m);
 
 // returns -1 if the number is negative and 1 if positive
-double Sign(double num);
+double Sign(double num)
+{
+  if(num%2==0)
+  {
+    return 1;
+  }
+  
+  return -1;
+  
+}
 
 
 // adds n to each element of the vector
