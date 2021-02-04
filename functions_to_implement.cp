@@ -1,3 +1,85 @@
+Last login: Thu Feb  4 10:44:41 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Justins-MacBook-Pro:~ chen$ cd Documents/
+Justins-MacBook-Pro:Documents chen$ ls
+Aspyr				Virtual Machines.localized
+GitHub				WebEx
+League of Legends		Zoom
+Microsoft User Data		haiyin stuff
+Justins-MacBook-Pro:Documents chen$ cd GitHub/
+Justins-MacBook-Pro:GitHub chen$ ls
+TaskCalendar
+Justins-MacBook-Pro:GitHub chen$ git clone https://github.com/CSCI-3010-CUBoulder/Spring21_Team7
+Cloning into 'Spring21_Team7'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (7/7), done.
+Justins-MacBook-Pro:GitHub chen$ git branch
+fatal: not a git repository (or any of the parent directories): .git
+Justins-MacBook-Pro:GitHub chen$ ls
+Spring21_Team7	TaskCalendar
+Justins-MacBook-Pro:GitHub chen$ cd Spring21_Team7/
+Justins-MacBook-Pro:Spring21_Team7 chen$ git branch
+* main
+Justins-MacBook-Pro:Spring21_Team7 chen$ git checkout -b chen
+Switched to a new branch 'chen'
+Justins-MacBook-Pro:Spring21_Team7 chen$ ls
+README.md			functions_to_implement.cp
+Justins-MacBook-Pro:Spring21_Team7 chen$ vi functions_to_implement.cp 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Justins-MacBook-Pro:Spring21_Team7 chen$ vim functions_to_implement.cp 
+Justins-MacBook-Pro:Spring21_Team7 chen$ git push https://github.com/CSCI-3010-CUBoulder/Spring21_Team7 --all
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/CSCI-3010-CUBoulder/Spring21_Team7/'
+Justins-MacBook-Pro:Spring21_Team7 chen$ ssh -T git@github.com
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? git config --global user.name "Your name here"^[
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'github.com,140.82.112.4' (RSA) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+Justins-MacBook-Pro:Spring21_Team7 chen$ git config --global user.name aosdnffoia
+Justins-MacBook-Pro:Spring21_Team7 chen$ git config --global user.email kingdra36@gmail.com
+Justins-MacBook-Pro:Spring21_Team7 chen$ git config --global color.ui true
+Justins-MacBook-Pro:Spring21_Team7 chen$ git config --global core.editor emacs
+Justins-MacBook-Pro:Spring21_Team7 chen$ ssh-keygen -t rsa -C kingdra36@gmail.com
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/chen/.ssh/id_rsa): pbcopy < ~/.ssh/id_rsa.pub
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Saving key "pbcopy < ~/.ssh/id_rsa.pub" failed: No such file or directory
+Justins-MacBook-Pro:Spring21_Team7 chen$ cd ..
+Justins-MacBook-Pro:GitHub chen$ pbcopy < ~/.ssh/id_rsa.pub kingdra36@gmail.com
+-bash: /Users/chen/.ssh/id_rsa.pub: No such file or directory
+Justins-MacBook-Pro:GitHub chen$ pbcopy < ~/.ssh/id_rsa.pub
+-bash: /Users/chen/.ssh/id_rsa.pub: No such file or directory
+Justins-MacBook-Pro:GitHub chen$ cd Spring21_Team7/
+Justins-MacBook-Pro:Spring21_Team7 chen$ ls
+README.md			functions_to_implement.cp
+Justins-MacBook-Pro:Spring21_Team7 chen$ vim functions_to_implement.cp 
+
 /* String functions section */
 
 // Splits a single string on separator into a vector of strings
@@ -18,7 +100,13 @@ std::vector<int> MatchVectors(std::vector<int> a, std::vector<int> b);
 
 // divides an input integer by 2 until it is impossible to do so, then returns the final number.
 // (16 = 2 * 2 * 2 * 2 * 1 -> 1, 7 -> 7, 26 = 2 * 13 -> 13, 52 = 2 * 2 * 13 -> 13)
-int RemoveTwos(int original);
+int RemoveTwos(int original){
+        int count=original;
+        while(count%2==0){
+                count/=2;
+        }
+        return count;
+}
 
 // takes a vector of integers and removes all elements evenly divisible by the passed in int
 std::vector<int> MultiplesFilter(std::vector<int>, int divides_by);
@@ -43,88 +131,4 @@ std::vector<int> VectorTimesN(std::vector<int> v, int n);
 
 // takes in two integers and returns a vector of size n with
 // values n*1, n*2, n*3... up to n*m
-std::vector<int> Multiples(int n, int m);
-
-// takes an integer n that is >= 0 and returns a vector of all squares up to n^n (1^1, 2^2, 3^3, .... n^n)
-std::vector<int> SquaresUntil(int n);
-
-// takes an int, n, and returns the nth value of the fibonacci sequence (1, 1, 2, 3, 5, 8, 13, ...)
-int NthFibonacci(int n);
-
-// takes an int, n, and returns the factorial of that int (n!)
-int Factorial(int n);
-
-// returns -1 if the number is negative and 1 if positive
-int Sign(int num);
-
-// takes two vectors of doubles, a and b. The function then removes elements from a if they are also in b.
-// If the double is in b, but not in a, nothing happens.
-std::vector<double> MatchVectors(std::vector<double> a, std::vector<double> b);
-
-// takes a vector of doubles and removes all elements evenly divisible by the passed in double
-std::vector<double> MultiplesFilter(std::vector<double>, double divides_by);
-
-// returns a vector with true for numbers greater than the second parameters and false for those less than or equal to
-std::vector<bool> GreaterMask(std::vector<double> nums, double greater_than);
-
-// returns a vector with true for numbers less than the second parameters and false for those greater than or equal to
-std::vector<bool> LessMask(std::vector<double> nums, double less_than);
-
-// returns a vector with true for numbers greater than the second parameters and false for those less than or equal to
-std::vector<bool> GreaterMask(std::vector<int> nums, int greater_than);
-
-// returns a vector with true for numbers less than the second parameters and false for those greater than or equal to
-std::vector<bool> LessMask(std::vector<int> nums, int less_than);
-
-// Sums all numbers in a vector and returns the resulting value
-double Sum(std::vector<double> nums);
-
-// Multiplies all numbers in a vector together and returns the resulting value
-double Product(std::vector<double> nums);
-
-// Adds an double n to each element of a given vector
-std::vector<double> VectorPlusN(std::vector<double> v, double n)
-{
-  for(int i = 0; i < v.size(); i++)
-  {
-    v[i] += n;
-  }
-  
-  return v;
-}
-
-// Multiples an double n with each element of a given vector
-std::vector<double> VectorTimesN(std::vector<double> v, double n);
-
-// takes in two doubles and returns a vector of size n with
-// values n*1, n*2, n*3... up to n*m
-std::vector<double> Multiples(double n, double m);
-
-// returns -1 if the number is negative and 1 if positive
-double Sign(double num)
-{
-  if(num%2==0)
-  {
-    return 1;
-  }
-  
-  return -1;
-  
-}
-
-
-// adds n to each element of the vector
-std::vector<int> AddN(std::vector<int>, int n);
-
-// adds n to each element of the vector
-std::vector<double> AddN(std::vector<double>, double n);
-
-// adds n to each element of the vector
-std::vector<std::string> AddN(std::vector<std::string>, std::string n);
-
-
-// subtracts n to each element of the vector
-std::vector<int> SubtractN(std::vector<int>, int n);
-
-// subtracts n to each element of the vector
-std::vector<double> SubtractN(std::vector<double>, double n);
+"functions_to_implement.cp" 123L, 5062C
