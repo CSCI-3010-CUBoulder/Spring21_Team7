@@ -49,4 +49,22 @@ std::vector<int> VectorTimesN(std::vector<int> v, int n);
 
 // takes in two integers and returns a vector of size n with
 // values n*1, n*2, n*3... up to n*m
-"functions_to_implement.cp" 123L, 5062C
+
+
+        
+ int CheckIfAbove10(int number) 
+{
+    if(number > 10)
+    {
+      return 100;
+    }
+    else
+    {
+      return 0;
+    }
+     
+}
+
+unsigned int Factorial( unsigned int number ) {
+    return number <= 1 ? number : Factorial(number-1)*number;
+}
